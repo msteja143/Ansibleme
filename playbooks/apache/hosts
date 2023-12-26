@@ -1,0 +1,3 @@
+[ubuntu]
+172.31.1.204 name=node1
+localhost name=acn group=none

@@ -1,6 +1,22 @@
 # ansible installation steps
 
 
+sudo vi /etc/ssh/sshd_config
+
+sudo systemctl restart sshd  
+
+sudo adduser jenkins
+
+su jenkins
+
+exit
+
+sudo visudo
+
+jenkins ALL=(ALL:ALL) NOPASSWD:ALL
+
+# relogin to user at will do
+
 sudo apt update
 sudo apt install software-properties-common
 sudo add-apt-repository --yes --update ppa:ansible/ansible
@@ -9,15 +25,13 @@ ansible --version
 
 
 
-sudo vi /etc/ssh/sshd_config
-
-sudo systemctl restart sshd  
-
-sudo adduser ansible
-
-su ansible
 
 cd ~
+
+ssh-keygen
+
+ssh-copy-id jenkins@<privateip of NODE>
+
 
 vi inventory
 
@@ -28,18 +42,6 @@ vi .yaml
 vi hosts
 ansible-playbook -i hosts   .yaml
 
-
-
-sudo visudo
-
-ansible ALL=(ALL:ALL) NOPASSWD:ALL
-
-
-
-
-ssh-keygen
-
-ssh-copy-id ansible@
 
 
 
